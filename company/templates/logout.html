@@ -1,0 +1,59 @@
+<html>
+  <style>
+    body {
+      background-image: url(https://img.freepik.com/free-vector/bright-gradient-background-geometric-colorful_361591-4613.jpg?t=st=1730679625~exp=1730683225~hmac=4a0b941087d2d94e96e774562801a8f4b1ad8b69f85075802c3442a417857499&w=1380);
+      background-repeat: no-repeat;
+      background-size: 100% 100vh;
+      color: white; 
+    }
+
+    a {
+      text-decoration: none;
+      color: white;
+      padding: 8px 12px; 
+      border: 1px solid white;
+      border-radius: 5px; 
+      background-color: rgba(255, 255, 255, 0.2); 
+      transition: background-color 0.3s, color 0.3s; 
+    }
+
+    a:hover {
+      color: #f13c20; 
+      background-color: rgba(99, 197, 235, 0.5); 
+    }
+
+    p {
+      display: flex;
+      justify-content: center;
+      margin-top: 250px;
+    }
+
+    button {
+      display: block;
+      margin: auto;
+      padding: 5px 25px;
+      border-radius: 5px;
+      font-size: 16px;
+      background: rgba(255, 255, 255, 0.2); 
+      color: white; 
+      border: none;
+    }
+
+    button:hover {
+      background-color: rgba(99, 197, 235, 0.5);
+    }
+  </style>
+  <body>
+    <a href="{% url 'home' %}">Home</a> 
+    {% block content %}
+      {% if user.is_authenticated %}
+        <p>You are currently logged in as &nbsp; <span style="color: red;">{{ user.username }}</span>.
+           Are you sure you want to logout?</p>
+        <form method="post">
+          {% csrf_token %}
+          <button type="submit"><b>LogOut</b></button>
+        </form>
+      {% endif %}
+    {% endblock %}
+  </body>
+</html>

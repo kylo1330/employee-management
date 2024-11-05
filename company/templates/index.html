@@ -1,0 +1,88 @@
+{% extends 'layout/app-layout.html' %}
+
+{% block content %}
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Software Tech</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+        }
+        .welcome-container {
+            text-align: center;
+            padding: 20px;
+            height: 100vh;
+            background-image: url('https://img.freepik.com/free-vector/abstract-gold-light-lines-pipe-speed-zoom-black-background-technology_1142-10321.jpg?t=st=1730660177~exp=1730663777~hmac=c345cbbea79ca6745f32814d9e19c55691c47228fd63f2439cf2f814faa8e30c&w=996'); 
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+            align-items: center;
+            padding-top: 10vh;
+        }
+        .welcome-title {
+            font-family: Arial, sans-serif;
+            color: #ffffff;
+            font-size: 2.5em;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+        }
+        .welcome-dialogue {
+            color: #f0f0f0;
+            font-size: 1.3em;
+            margin-top: 10px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+        }
+        .signup-btn, .view-employees-btn {
+            background-color: #007bff;
+            color: #fff;
+            font-size: 1.2em;
+            padding: 10px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.3s ease, color 0.3s ease;
+        }
+        .signup-btn:hover, .view-employees-btn:hover {
+            background-color: #0056b3;
+            color: #ffffff;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+            transform: scale(1.05);
+            text-decoration: none;
+        }
+        .login-link {
+            color: #007bff;
+            text-decoration: underline;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        .login-link:hover {
+            color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="welcome-container">
+        <h1 class="welcome-title">Welcome to Software Tech</h1>
+        <p class="welcome-dialogue">Empowering teams, simplifying management. Let’s make great things happen!</p>
+        <div class="text-center mt-4">
+            {% if user.is_authenticated %}
+                <a href="{% url 'retrieveproduct' %}" class="view-employees-btn">View Employees</a>
+            {% else %}
+                <a href="{% url 'signup' %}" class="signup-btn">Sign Up</a>
+                <p class="mt-3" style="color: #ffffff;">Already have an account? 
+                    <a href="{% url 'login' %}" class="login-link">Log in here</a>
+                </p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+{% endblock %}

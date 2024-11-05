@@ -1,0 +1,22 @@
+{% extends 'layout/app-layout.html' %}
+
+{% block content %}
+    <div style="background-color: #e9ecef; padding: 60px; display: flex; justify-content: center; align-items: center; height: 100vh;">
+        <div class="login-box" style="padding: 40px; text-align: center; color: #333; border: 1px solid #ccc; border-radius: 8px; width: 500px; background-color: #f9f9f9;">
+            <h2 style="font-size: 2em;">Login</h2>
+            <form method="post" style="display: flex; flex-direction: column; align-items: flex-start;">
+                {% csrf_token %}
+                <label for="username" style="margin-bottom: 5px; font-size: 1.1em;">Username</label>
+                <input type="text" name="username" id="username" style="width: 100%; padding: 12px; margin-bottom: 20px; font-size: 1.1em; border: 1px solid #ccc; border-radius: 4px;" required>
+
+                <label for="password" style="margin-bottom: 5px; font-size: 1.1em;">Password</label>
+                <input type="password" name="password" id="password" style="width: 100%; padding: 12px; margin-bottom: 20px; font-size: 1.1em; border: 1px solid #ccc; border-radius: 4px;" required>
+                
+                <button type="submit" style="background-color: #333; color: #fff; padding: 15px 30px; font-size: 1.2em; border: none; border-radius: 5px; cursor: pointer; width: 100%; margin-top: 20px;">
+                    Login
+                </button>
+            </form>
+            <p style="margin-top: 25px; font-size: 1.1em;">If you don't have an account, <a href="{% url 'signup' %}" style="color: #007bff; text-decoration: underline;">sign up here</a>.</p>
+        </div>
+    </div>
+{% endblock %}
